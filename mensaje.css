@@ -1,0 +1,321 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    min-height: 100vh;
+    overflow-x: hidden;
+
+    background: linear-gradient(
+        135deg,
+        #ff758c,
+        #ff7eb3,
+        #c471ed
+    );
+
+    color: white;
+
+.decoracion-mensaje {
+    position: fixed;
+    top: 0;
+    left: 15px;
+
+    width: 90px;
+    height: 100vh;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+
+    z-index: 1;
+    pointer-events: none;
+}
+
+.decoracion-mensaje.derecha {
+    left: auto;
+    right: 15px;
+}
+
+.decoracion-mensaje span {
+    font-size: 32px;
+
+    opacity: 0.7;
+
+    animation: flotarLado 3s ease-in-out infinite alternate;
+}
+
+.decoracion-mensaje span:nth-child(2) {
+    animation-delay: 0.5s;
+}
+
+.decoracion-mensaje span:nth-child(3) {
+    animation-delay: 1s;
+}
+
+.decoracion-mensaje span:nth-child(4) {
+    animation-delay: 1.5s;
+}
+
+.decoracion-mensaje span:nth-child(5) {
+    animation-delay: 2s;
+}
+
+@keyframes flotarLado {
+
+    from {
+        transform: translateY(-10px) rotate(-8deg);
+        opacity: 0.5;
+    }
+
+    to {
+        transform: translateY(10px) rotate(8deg);
+        opacity: 1;
+    }
+
+}
+
+.mensaje-pagina {
+    min-height: 100vh;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    text-align: center;
+
+    padding: 50px 130px;
+
+    position: relative;
+    z-index: 2;
+}
+
+.mensaje-pagina h1 {
+    font-size: 48px;
+
+    margin-bottom: 30px;
+
+    text-shadow:
+        0 0 10px rgba(255,255,255,0.7),
+        0 5px 20px rgba(0,0,0,0.2);
+
+    animation: brillo 2s ease-in-out infinite alternate;
+}
+
+@keyframes brillo {
+
+    from {
+        text-shadow:
+            0 0 10px rgba(255,255,255,0.5);
+    }
+
+    to {
+        text-shadow:
+            0 0 25px white,
+            0 0 40px rgba(255,255,255,0.7);
+    }
+
+}
+
+
+.carta {
+    width: 100%;
+    max-width: 700px;
+
+    padding: 40px;
+
+    background: rgba(255,255,255,0.92);
+
+    color: #444;
+
+    border-radius: 25px;
+
+    border: 3px solid rgba(255,255,255,0.8);
+
+    box-shadow:
+        0 15px 40px rgba(0,0,0,0.3),
+        0 0 30px rgba(255,255,255,0.3);
+
+    backdrop-filter: blur(10px);
+
+    animation: aparecerCarta 1.5s ease;
+}
+
+
+.carta h2 {
+    color: #e84373;
+
+    font-size: 28px;
+
+    margin-bottom: 25px;
+}
+
+
+.carta p {
+    font-size: 18px;
+
+    line-height: 1.7;
+
+    margin-bottom: 18px;
+}
+
+
+.carta h2:last-child {
+    margin-top: 25px;
+    margin-bottom: 0;
+}
+
+
+@keyframes aparecerCarta {
+
+    from {
+        opacity: 0;
+        transform: translateY(40px) scale(0.95);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+
+}
+
+
+.mensaje-pagina button {
+
+    margin-top: 30px;
+
+    border: none;
+
+    padding: 16px 32px;
+
+    border-radius: 50px;
+
+    background: white;
+
+    color: #e84373;
+
+    font-size: 17px;
+
+    font-weight: bold;
+
+    cursor: pointer;
+
+    box-shadow:
+        0 8px 20px rgba(0,0,0,0.25);
+
+    transition: 0.3s;
+}
+
+.mensaje-pagina button:hover {
+
+    transform: scale(1.08);
+
+    box-shadow:
+        0 0 20px rgba(255,255,255,0.9),
+        0 10px 30px rgba(0,0,0,0.3);
+}
+
+.mensaje-pagina button:active {
+
+    transform: scale(0.95);
+
+}
+
+.slide-up {
+    animation: slideUp 2s ease-in-out;
+}
+
+@keyframes slideUp {
+
+    0% {
+        transform: translateY(30px);
+        opacity: 0;
+    }
+
+    100% {
+        transform: translateY(0);
+        opacity: 1;
+    }
+
+}
+
+
+@media (max-width: 600px) {
+
+    .mensaje-pagina {
+        padding: 40px 25px;
+    }
+
+    .mensaje-pagina h1 {
+        font-size: 36px;
+    }
+
+    .carta {
+        padding: 25px 20px;
+    }
+
+    .carta h2 {
+        font-size: 24px;
+    }
+
+    .carta p {
+        font-size: 16px;
+    }
+
+    .decoracion-mensaje {
+        width: 45px;
+        left: 0;
+    }
+
+    .decoracion-mensaje.derecha {
+        right: 0;
+        left: auto;
+    }
+
+    .decoracion-mensaje span {
+        font-size: 22px;
+    }
+
+}
+
+
+.carta::after {
+    content: "";
+
+    position: absolute;
+
+    top: 0;
+    left: -100%;
+
+    width: 50%;
+    height: 100%;
+
+    background: linear-gradient(
+        90deg,
+        transparent,
+        rgba(255,255,255,0.7),
+        transparent
+    );
+
+    transform: skewX(-20deg);
+
+    animation: destello 1.5s ease-in-out 3.5s;
+}
+
+
+@keyframes destello {
+
+    0% {
+        left: -100%;
+    }
+
+    100% {
+        left: 150%;
+    }
+
+}
